@@ -11,6 +11,7 @@ const pages: Record<string, ReturnType<typeof lazy>> = {
   "/tutor": lazy(() => import("./pages/TutorDashboard")),
   "/tutor/onboarding": lazy(() => import("./pages/TutorOnboarding")),
   "/tutor/profile": lazy(() => import("./pages/TutorProfile")),
+  "/subjects": lazy(() => import("./pages/Subjects")),
   "/get-started": lazy(() => import("./pages/StudentInquiry")),
 };
 

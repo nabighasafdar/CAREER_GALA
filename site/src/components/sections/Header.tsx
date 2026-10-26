@@ -45,6 +45,7 @@ export function Header() {
                 <span>{n.label}</span>
               </motion.a>
             ))}
+            <a href="/subjects"><span>Subjects</span></a>
           </nav>
           <div className="hdr-cta">
             <a className="btn btn-sm" href="/login">Log in</a>
@@ -67,6 +68,7 @@ export function Header() {
               <motion.a key={n.id} className="l" href={`#${n.id}`} onClick={go(n.id)}
                 initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.25 + i * 0.07, duration: 0.5, ease }}>{n.label}</motion.a>
             ))}
+            <motion.a className="l" href="/subjects" initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.7, duration: 0.5, ease }}>Subjects</motion.a>
             <motion.a className="l" href="/get-started" style={{ color: "#FF6342" }} initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.74, duration: 0.5, ease }}>Get started</motion.a>
             <motion.a className="l" href="/login" initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.8, duration: 0.5, ease }}>Log in</motion.a>
             <motion.a className="l" href="/signup" initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.87, duration: 0.5, ease }}>Sign up</motion.a>

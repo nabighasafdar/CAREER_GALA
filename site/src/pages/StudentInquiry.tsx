@@ -20,9 +20,19 @@ const init = {
   name: "", phone: "", email: "", message: "", parent: false, studentName: "", consent: false,
 };
 
+/** Subjects chosen on /subjects arrive as ?subjects=A,B; ones the form has no tile for go under "Other". */
+const fromQuery = () => {
+  const picked = (new URLSearchParams(location.search).get("subjects") ?? "").split(",").map((x) => x.trim()).filter(Boolean);
+  const lvl = new URLSearchParams(location.search).get("level") ?? "";
+  const level = LEVELS.includes(lvl) ? lvl : init.level;
+  if (!picked.length) return { ...init, level };
+  const known = picked.filter((x) => SUBJECTS.includes(x) && x !== "Other"), other = picked.filter((x) => !known.includes(x));
+  return { ...init, level, subjects: [...known, ...(other.length ? ["Other"] : [])], otherSubjects: other };
+};
+
 export default function StudentInquiry() {
   const [step, setStep] = useState(0);
-  const [d, setD] = useState(init);
+  const [d, setD] = useState(fromQuery);
   const [status, setStatus] = useState<"idle" | "sending" | "done">("idle");
   const [errors, setErrors] = useState<Errors>({});
   const [submitErr, setSubmitErr] = useState("");

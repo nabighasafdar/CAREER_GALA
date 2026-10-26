@@ -63,7 +63,7 @@ function Featured() {
 
 const Card = ({ s, i }: { s: Story; i: number }) => (
   <article className="tc">
-    <div className="stars" aria-label="5 out of 5 stars">{[0, 1, 2, 3, 4].map((k) => <Star key={k} size={16} fill="currentColor" />)}</div>
+    <div className="stars" role="img" aria-label="5 out of 5 stars">{[0, 1, 2, 3, 4].map((k) => <Star key={k} size={16} fill="currentColor" />)}</div>
     <p>{s.quote}</p>
     <div className="who"><Avatar name={s.name} i={i} size={40} /><div><b>{s.name}</b><Chip s={s} /></div></div>
   </article>
