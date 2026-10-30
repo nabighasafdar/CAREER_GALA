@@ -26,7 +26,7 @@ export default function TutorProfile() {
       <header className="tp-hdr">
         <Brand />
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-          <a href="/" style={{ fontWeight: 600, fontSize: 15, color: "#55627A" }}>← Back to home</a>
+          <a href="/home" style={{ fontWeight: 600, fontSize: 15, color: "#55627A" }}>← Back to home</a>
           <a className="pg-btn pg-ghost" style={{ fontSize: 15, minHeight: 44 }} href="/login">Log in</a>
         </div>
       </header>

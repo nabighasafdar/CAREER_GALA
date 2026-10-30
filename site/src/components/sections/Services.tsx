@@ -119,7 +119,7 @@ export function Services() {
             </TiltCard>
           </Wipe>
           <Wipe i={3} className="g-D">
-            <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToId("contact"); }} style={{ display: "flex", flex: 1 }}>
+            <a href="/contact" style={{ display: "flex", flex: 1 }}>
               <TiltCard className="D" style={{ flex: 1 }}>
                 <div><h3>Free first consultation</h3><p style={{ marginTop: 8 }}>Tell us where you are. We'll help you see where you could go.</p></div>
                 <span className="arrow"><ArrowUpRight /></span>

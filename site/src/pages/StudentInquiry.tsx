@@ -1,18 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { Brand, Check, Eyebrow } from "./Shell";
-import { CITIES, EMAIL, Field, Group, PHONE, Pick, TagInput, Tick, toggle, type Errors } from "./ui";
+import { BUDGETS, CITIES, EMAIL, FREQ, Field, GENDER, Group, LEVELS, PHONE, Pick, START, SUBJECTS, TIMES, TagInput, Tick, toggle, type Errors } from "./ui";
 import { submitLead } from "../lib/submit";
+import { addRequests } from "../lib/store";
+import { studentId } from "../lib/auth";
 import { site } from "../content/site";
 
 const NEEDS = [{ n: "Find a tutor", s: "One-to-one lessons" }, { n: "Career counselling", s: "Plan your next step" }];
-const SUBJECTS = ["Maths", "Physics", "Chemistry", "Biology", "Science", "English", "Urdu", "Computer", "IELTS / TOEFL", "MDCAT", "Other"];
 const TOPICS = ["Choosing a field or degree", "University admissions", "Scholarships & studying abroad", "Switching careers", "CV & interview prep", "Other"];
-const LEVELS = ["Primary / Middle", "Matric", "FSc", "O Level", "A Level", "University", "Professional", "Other"];
-const TIMES = ["Morning", "Afternoon", "Evening", "Weekends"];
-const BUDGETS = ["Not sure yet", "Under Rs 1,000", "Rs 1,000 – 2,000", "Rs 2,000 – 3,000", "Rs 3,000+"];
-const START = ["As soon as possible", "Within a week", "Within a month", "Just exploring"];
-const FREQ = ["1–2 days a week", "3–4 days a week", "Every day", "Not sure yet"];
-const GENDER = ["No preference", "Female tutor", "Male tutor"];
 
 const init = {
   need: "Find a tutor", subjects: ["Maths"], otherSubjects: [] as string[], topic: TOPICS[0], otherTopic: "", level: "Matric", otherLevel: "", grade: "", goal: "",
@@ -86,6 +81,11 @@ export default function StudentInquiry() {
         domain: tutor ? subject : topic, stage: level, message: d.message.trim() || d.goal.trim(),
         details: { need: d.need, subjects: subjectList, grade: d.grade, goal: d.goal, mode: d.mode, city, area: d.area, budget: d.budget, times: d.times, start: d.start, frequency: d.freq, tutorGender: d.gender, parent: d.parent, studentName: d.parent ? d.studentName : d.name },
       });
+      if (tutor) addRequests(subjectList.map((s) => ({
+        name: d.name.trim(), studentName: (d.parent ? d.studentName : d.name).trim(), phone: d.phone.trim(), email: d.email.trim() || undefined,
+        subject: s, level, mode: home ? "At home" : "Online", city, area: d.area.trim(), budget: d.budget, times: d.times, start: d.start,
+        frequency: d.freq, gender: d.gender, goal: d.goal.trim(), message: d.message.trim(),
+      })), studentId());
       setStatus("done");
     } catch { setStatus("idle"); setSubmitErr("We couldn't send your request. Please try again or message us on WhatsApp."); }
   };
@@ -98,7 +98,7 @@ export default function StudentInquiry() {
     <div className="pg wiz-page" style={{ paddingTop: 28 }}>
       <div aria-hidden className="orb" style={{ width: 440, height: 440, left: "8%", top: 280, background: "#9FE3D2", opacity: .55, filter: "blur(90px)" }} />
       <div aria-hidden className="orb" style={{ width: 380, height: 380, right: "8%", top: 520, background: "#FFC2B3", opacity: .5, filter: "blur(100px)" }} />
-      <div className="wiz-top" style={{ marginBottom: 16 }}><Brand /><a className="pg-btn pg-ghost" style={{ fontSize: 15, minHeight: 44 }} href="/">Back to home</a></div>
+      <div className="wiz-top" style={{ marginBottom: 16 }}><Brand /><a className="pg-btn pg-ghost" style={{ fontSize: 15, minHeight: 44 }} href="/home">Back to home</a></div>
       <div className="inq-head" id="main">
         <Eyebrow>Get started</Eyebrow>
         <h1>Tell us what you <span className="serif">need</span></h1>

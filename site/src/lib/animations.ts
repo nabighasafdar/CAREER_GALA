@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { navigate } from "./router";
 export const ease = [0.22, 1, 0.36, 1] as const;
 export const spring = { type: "spring", stiffness: 260, damping: 24 } as const;
 export const viewport = { once: true, margin: "0px 0px -15% 0px" } as const;
@@ -19,7 +20,7 @@ export const useDesktopHover = () => useMedia("(hover: hover) and (min-width: 10
 
 export const scrollToId = (id: string) => {
   const el = document.getElementById(id);
-  if (!el) return;
+  if (!el) return navigate(`/${id}`);
   const l = (window as any).__lenis;
   if (l) l.scrollTo(el, { offset: -70 });
   else el.scrollIntoView({ behavior: "smooth" });

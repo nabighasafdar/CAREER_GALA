@@ -15,7 +15,6 @@ const socials = [
   { label: "WhatsApp", href: site.whatsapp, c: "#25D366", I: Wa },
   { label: "WhatsApp Channel", href: site.social.channel, c: "#25D366", I: () => <Megaphone size={20} /> },
 ];
-const links = [...site.nav.map((n) => [n.label, n.id]), ["Contact", "contact"]];
 
 export function Footer({ lenisTop }: { lenisTop: () => void }) {
   const reduced = useReducedMotion();
@@ -40,7 +39,7 @@ export function Footer({ lenisTop }: { lenisTop: () => void }) {
             </div>
             <div>
               <h4>Quick links</h4>
-              <ul>{links.map(([l, id]) => <li key={id}><a className="ulink" href={`#${id}`} onClick={(e) => { e.preventDefault(); scrollToId(id); }}>{l}</a></li>)}</ul>
+              <ul>{site.nav.map((n) => <li key={n.path}><a className="ulink" href={n.path}>{n.label}</a></li>)}</ul>
             </div>
             <div>
               <h4>Contact</h4>

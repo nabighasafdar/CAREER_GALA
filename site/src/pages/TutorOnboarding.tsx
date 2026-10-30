@@ -3,6 +3,7 @@ import { Brand, Eyebrow } from "./Shell";
 import { CITIES, EMAIL, Field, Group, PHONE, Pick, TagInput, Tick, asList, toggle, type Errors } from "./ui";
 import { navigate } from "../lib/router";
 import { submitLead } from "../lib/submit";
+import { addTutor, type Tutor } from "../lib/store";
 
 export const TUTOR_KEY = "cg-tutor";
 const STEPS = ["Personal", "Teaching profile", "Qualifications", "Identity", "Intro video", "Availability & rates", "Agreement"];
@@ -129,6 +130,10 @@ export default function TutorOnboarding() {
     try {
       const { photo: _p, ...rest } = d;
       await submitLead({ kind: "tutor-application", name: d.name.trim(), email: d.email.trim(), phone: d.phone.trim(), message: d.bio, details: { ...rest, certs: d.certs.filter((c) => c.name.trim()), subjects, levels: allLevels(d), langs: allLangs(d) } });
+      addTutor({
+        name: d.name.trim(), phone: d.phone.trim(), email: d.email.trim(), gender: d.gender, city: d.city === "Other" ? d.otherCity.trim() : d.city, areas: d.areas.trim(),
+        mode: d.mode as Tutor["mode"], subjects, levels: allLevels(d), rates: Object.fromEntries(subjects.map((s) => [s, Number(d.rates[s])])), slots: d.slots, experience: d.experience,
+      });
       setStep(7);
     } catch { setSubmitErr("We couldn't submit your application. Please try again."); }
     setStatus("idle");

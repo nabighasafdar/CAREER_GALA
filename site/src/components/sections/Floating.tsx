@@ -14,7 +14,7 @@ export function Floating() {
       const max = document.documentElement.scrollHeight - innerHeight;
       setShow(scrollY > max * 0.3);
       const h = document.getElementById("home");
-      setPast(!!h && scrollY > h.offsetHeight * 0.8);
+      setPast(!h || scrollY > h.offsetHeight * 0.8);
     };
     f(); addEventListener("scroll", f, { passive: true });
     const c = document.getElementById("contact");

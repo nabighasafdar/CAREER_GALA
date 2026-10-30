@@ -1,15 +1,14 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, useSpring } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { site } from "../../content/site";
-import { ease, scrollToId, useReducedMotion } from "../../lib/animations";
+import { ease, useReducedMotion } from "../../lib/animations";
 import { Logo } from "../ui/Brand";
 
-export function Header() {
+export function Header({ path }: { path: string }) {
   const [pill, setPill] = useState(false);
   const [hide, setHide] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("home");
   const reduced = useReducedMotion();
   const { scrollY, scrollYProgress } = useScroll();
   const prog = useSpring(scrollYProgress, { stiffness: 200, damping: 30 });
@@ -20,16 +19,7 @@ export function Header() {
     setHide(y > 200 && y > prev && !open);
   });
 
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      (es) => es.forEach((e) => e.isIntersecting && setActive(e.target.id)),
-      { rootMargin: "-45% 0px -50% 0px" }
-    );
-    site.nav.forEach((n) => { const el = document.getElementById(n.id); if (el) io.observe(el); });
-    return () => io.disconnect();
-  }, []);
-
-  const go = (id: string) => (e: React.MouseEvent) => { e.preventDefault(); setOpen(false); scrollToId(id); };
+  const active = path === "/" ? "/home" : path;
 
   return (
     <>
@@ -39,9 +29,9 @@ export function Header() {
           <Logo />
           <nav className="nav" aria-label="Primary">
             {site.nav.map((n, i) => (
-              <motion.a key={n.id} href={`#${n.id}`} onClick={go(n.id)} aria-current={active === n.id ? "true" : undefined}
+              <motion.a key={n.path} href={n.path} aria-current={active === n.path ? "page" : undefined}
                 initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.06, duration: 0.4, ease }}>
-                {active === n.id && <motion.span layoutId="navpill" className="bg" transition={{ type: "spring", stiffness: 260, damping: 24 }} />}
+                {active === n.path && <motion.span layoutId="navpill" className="bg" transition={{ type: "spring", stiffness: 260, damping: 24 }} />}
                 <span>{n.label}</span>
               </motion.a>
             ))}
@@ -64,12 +54,12 @@ export function Header() {
             exit={{ clipPath: "circle(0px at calc(100% - 40px) 40px)" }}
             transition={{ duration: 0.6, ease }}>
             <button className="x" aria-label="Close menu" onClick={() => setOpen(false)}><X /></button>
-            {[...site.nav, { id: "contact", label: "Contact" }].map((n, i) => (
-              <motion.a key={n.id} className="l" href={`#${n.id}`} onClick={go(n.id)}
+            {site.nav.map((n, i) => (
+              <motion.a key={n.path} className="l" href={n.path} onClick={() => setOpen(false)}
                 initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.25 + i * 0.07, duration: 0.5, ease }}>{n.label}</motion.a>
             ))}
-            <motion.a className="l" href="/subjects" initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.7, duration: 0.5, ease }}>Subjects</motion.a>
-            <motion.a className="l" href="/get-started" style={{ color: "#FF6342" }} initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.74, duration: 0.5, ease }}>Get started</motion.a>
+            <motion.a className="l" href="/subjects" onClick={() => setOpen(false)} initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.7, duration: 0.5, ease }}>Subjects</motion.a>
+            <motion.a className="l" href="/get-started" onClick={() => setOpen(false)} style={{ color: "#FF6342" }} initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.74, duration: 0.5, ease }}>Get started</motion.a>
             <motion.a className="l" href="/login" initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.8, duration: 0.5, ease }}>Log in</motion.a>
             <motion.a className="l" href="/signup" initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.87, duration: 0.5, ease }}>Sign up</motion.a>
           </motion.div>

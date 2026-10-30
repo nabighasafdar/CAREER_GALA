@@ -75,7 +75,7 @@ export default function Subjects() {
       <div className="pg wiz-page subj-page" style={{ paddingTop: 28 }}>
         <div aria-hidden className="orb" style={{ width: 460, height: 460, left: "4%", top: 200, background: "#9FE3D2", opacity: .5, filter: "blur(90px)" }} />
         <div aria-hidden className="orb" style={{ width: 400, height: 400, right: "4%", top: 520, background: "#FFC2B3", opacity: .45, filter: "blur(100px)" }} />
-        <div className="wiz-top"><Brand /><a className="pg-btn pg-ghost" style={{ fontSize: 15, minHeight: 44 }} href="/">Back to home</a></div>
+        <div className="wiz-top"><Brand /><a className="pg-btn pg-ghost" style={{ fontSize: 15, minHeight: 44 }} href="/home">Back to home</a></div>
 
         <main id="main" className="cf-wrap">
           <div className="inq-head">

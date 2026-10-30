@@ -4,7 +4,7 @@ import "./pages.css";
 export const Mark = ({ size = 34 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 34 34" aria-hidden><rect width="34" height="34" rx="9" fill="#1F8F7A" /><path d="M9 24c3-2 4-8 7-8s3 3 5 3 3-6 4-8" stroke="#fff" strokeWidth="2.4" fill="none" strokeLinecap="round" /><circle cx="25" cy="10" r="2.6" fill="#FF6342" /></svg>
 );
-export const Brand = ({ size }: { size?: number }) => (<a href="/" className="pg-brand" aria-label="Career Gala home"><Mark size={size} /><span>Career <b>Gala</b></span></a>);
+export const Brand = ({ size }: { size?: number }) => (<a href="/home" className="pg-brand" aria-label="Career Gala home"><Mark size={size} /><span>Career <b>Gala</b></span></a>);
 export const Check = () => (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E5482A" strokeWidth="2.4" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>);
 export const Eyebrow = ({ children }: { children: ReactNode }) => (<div className="eyebrow"><i />{children}</div>);
 
@@ -30,13 +30,14 @@ export function AuthShell({ side, children }: { side: ReactNode; children: React
   );
 }
 
-export function DashShell({ nav, foot, children }: { nav: string[]; foot: ReactNode; children: ReactNode }) {
+/** Pass `current` + `onNav` to make the side nav switch views; without them it's decorative. */
+export function DashShell({ nav, foot, children, current, onNav }: { nav: string[]; foot: ReactNode; children: ReactNode; current?: string; onNav?: (n: string) => void }) {
   return (
     <div className="pg dash">
       <aside className="dash-side">
         <Brand size={32} />
         <nav className="dash-nav" aria-label="Dashboard">
-          {nav.map((n, i) => (<a key={n} href="#main" aria-current={i === 0 ? "page" : undefined} onClick={(e) => e.preventDefault()}>{n}</a>))}
+          {nav.map((n) => (<a key={n} href="#main" aria-current={(current ?? nav[0]) === n ? "page" : undefined} onClick={(e) => { e.preventDefault(); onNav?.(n); }}>{n}</a>))}
         </nav>
         {foot}
       </aside>
@@ -44,5 +45,10 @@ export function DashShell({ nav, foot, children }: { nav: string[]; foot: ReactN
     </div>
   );
 }
+
+const ico = { width: 20, height: 20, viewBox: "0 0 24 24", fill: "none", stroke: "#102027", strokeWidth: 1.75, "aria-hidden": true } as const;
+export const Stat = ({ v, l, children }: { v: string; l: string; children: ReactNode }) => (
+  <div className="pstat"><span className="pring"><svg {...ico}>{children}</svg></span><div><b>{v}</b><span className="mut" style={{ marginTop: 4 }}>{l}</span></div></div>
+);
 
 export const firstName = (fallback: string) => { try { return sessionStorage.getItem("cg-name") || fallback; } catch { return fallback; } };

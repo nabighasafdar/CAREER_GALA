@@ -11,6 +11,13 @@ export const splitList = (s: string) => s.split(/[,،\n]/).map((x) => x.trim()).
 export const Tick = ({ size = 38 }: { size?: number }) => (<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="#1F8F7A" strokeWidth="2.4" aria-hidden><path d="M20 6L9 17l-5-5" /></svg>);
 
 export const CITIES = ["Lahore", "Karachi", "Islamabad", "Rawalpindi", "Faisalabad", "Peshawar", "Quetta", "Multan", "Other"];
+export const SUBJECTS = ["Maths", "Physics", "Chemistry", "Biology", "Science", "English", "Urdu", "Computer", "IELTS / TOEFL", "MDCAT", "Other"];
+export const LEVELS = ["Primary / Middle", "Matric", "FSc", "O Level", "A Level", "University", "Professional", "Other"];
+export const TIMES = ["Morning", "Afternoon", "Evening", "Weekends"];
+export const BUDGETS = ["Not sure yet", "Under Rs 1,000", "Rs 1,000 – 2,000", "Rs 2,000 – 3,000", "Rs 3,000+"];
+export const START = ["As soon as possible", "Within a week", "Within a month", "Just exploring"];
+export const FREQ = ["1–2 days a week", "3–4 days a week", "Every day", "Not sure yet"];
+export const GENDER = ["No preference", "Female tutor", "Male tutor"];
 
 export type Errors = Record<string, string>;
 

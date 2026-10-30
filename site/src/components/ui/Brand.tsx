@@ -6,7 +6,7 @@ export const LogoMark = ({ size = 34 }: { size?: number }) => (
     <circle cx="50" cy="16" r="5" fill="#FF6342" />
   </svg>
 );
-export const Logo = () => (<a href="#home" className="logo" aria-label="Career Gala home"><LogoMark /><span>Career <b>Gala</b></span></a>);
+export const Logo = () => (<a href="/home" className="logo" aria-label="Career Gala home"><LogoMark /><span>Career <b>Gala</b></span></a>);
 
 export const initials = (n: string) => n.split(" ").map((s) => s[0]).join("").slice(0, 2);
 const grads = ["#157A67,#1F8F7A", "#1F8F7A,#0EA5C6", "#E8579A,#FF6342", "#157A67,#E8579A", "#0EA5C6,#059669"];
