@@ -3,101 +3,28 @@ export const site = {
   email: "info@careergala.com",
   phone: "+92 310 1178268",
   whatsapp: "https://wa.me/923101178268",
-  social: {
-    facebook: "https://www.facebook.com/careergala",
-    instagram: "https://instagram.com/careergala",
-    channel: "https://whatsapp.com/channel/0029VafYRkF3WHTekL3kc81u",
-  },
   nav: [
     { path: "/home", label: "Home" },
-    { path: "/services", label: "Services" },
-    { path: "/how-it-works", label: "How it works" },
-    { path: "/stories", label: "Stories" },
-    { path: "/faq", label: "FAQ" },
-    { path: "/contact", label: "Contact" },
+    { path: "/find-tutor", label: "Find a Tutor" },
+    { path: "/counselling", label: "Counselling" },
+    { path: "/become-tutor", label: "Become a Tutor" },
+    { path: "/pricing", label: "Pricing" },
   ],
-  explore: [
-    { path: "/services", title: "Our services", text: "Comprehensive support to help you discover, plan, and achieve your career goals" },
-    { path: "/how-it-works", title: "How it works", text: "A simple, proven process to guide you from confusion to clarity" },
-    { path: "/stories", title: "Success stories", text: "Hear from students who transformed their careers with Career Gala" },
-    { path: "/faq", title: "Frequently asked questions", text: "Everything you need to know about our services" },
-    { path: "/contact", title: "Schedule your free consultation", text: "Take the first step towards your dream career" },
-  ],
-  hero: {
-    eyebrow: "Career counselling for Pakistani students",
-    sub: "Personalized guidance for Pakistani students",
-    body: "Expert career counselling, personalized roadmaps, and life skills training tailored to your unique journey",
-    trust: "500+ students guided · Online & in-person in Karachi, Lahore, Islamabad",
-  },
-  // [FIX] client must confirm these figures
-  stats: [
-    { value: 500, suffix: "+", label: "Students guided", pct: 1 },
-    { value: 95, suffix: "%", label: "Career satisfaction", pct: 0.95 },
-    { value: 10, suffix: "+", label: "Years experience", pct: 1 },
-    { value: 98, suffix: "%", label: "Goal achievement", pct: 0.98 },
-  ],
-  statsNote: "Figures to be confirmed by Career Gala before launch.",
-  services: {
-    sub: "Comprehensive support to help you discover, plan, and achieve your career goals",
-    counselling: {
-      title: "Career counselling",
-      body: "One-on-one sessions with experienced counselors who understand the Pakistani education system and job market.",
-      points: [
-        "Personalized assessment of your strengths and interests",
-        "Industry insights and career path exploration",
-        "University and program selection guidance",
-        "Interview preparation and resume building",
-      ],
-      more: "Every session is built around you: your marks, your family context, your interests and the real options open to students in Pakistan and abroad.",
-    },
-    roadmap: {
-      title: "Personalized career roadmap",
-      body: "A comprehensive action plan tailored to your unique goals, skills, and circumstances.",
-      points: [
-        "Step-by-step milestones and timelines",
-        "Skill development recommendations",
-        "Networking and mentorship opportunities",
-        "Regular progress tracking and adjustments",
-      ],
-      more: "Your roadmap is a living document. We revisit it as results, interests and opportunities change.",
-    },
-    life: {
-      title: "Life skills training",
-      body: "Essential soft skills and personal development training to help you succeed in any career.",
-      points: [
-        "Communication and presentation skills",
-        "Time management and productivity",
-        "Leadership and teamwork abilities",
-        "Emotional intelligence and resilience",
-      ],
-      more: "Grades open doors; these skills keep them open. Practical, hands-on training that you can use from day one.",
-    },
-  },
-  steps: [
-    { title: "Discovery call", body: "We start with a free consultation to understand your goals, interests, and current situation. This helps us tailor our approach to your unique needs." },
-    { title: "Assessment", body: "Through comprehensive evaluations, we identify your strengths, skills, personality traits, and career preferences to build a complete profile." },
-    { title: "Personalized roadmap", body: "We create a detailed action plan with clear milestones, recommended courses, skill development areas, and career opportunities aligned with your goals." },
-    { title: "Ongoing support", body: "Your journey doesn't end with the roadmap. We provide continuous mentorship, answer questions, and adjust your plan as you grow and evolve." },
-  ],
-  stories: [
-    { name: "Ayesha Khan", field: "Software Engineering", domain: "tech", quote: "Career Gala helped me navigate the confusing world of tech careers. Their guidance on choosing the right university and building my portfolio was invaluable. I'm now working at a leading software company in Karachi.", before: "Lost in the confusing world of tech careers", after: "Working at a leading software company in Karachi" },
-    { name: "Hassan Ali", field: "Business Administration", domain: "business", quote: "I was torn between family expectations and my own interests. The counselors at Career Gala helped me find a path that honored both. Their personalized approach made all the difference.", before: "Torn between family expectations and own interests", after: "A path that honours both" },
-    { name: "Fatima Malik", field: "Graphic Design", domain: "design", quote: "As a creative person, I struggled to see how I could build a stable career. Career Gala showed me the opportunities in design and helped me develop a portfolio that landed me freelance clients.", before: "Unsure a creative path could be stable", after: "A portfolio that landed freelance clients" },
-    { name: "Usman Ahmed", field: "Medicine", domain: "medicine", quote: "The roadmap they created for my medical career was incredibly detailed. From MCAT prep to residency planning, they covered everything. I felt supported every step of the way.", before: "No clear plan for a long medical journey", after: "A detailed roadmap, from MCAT to residency" },
-    { name: "Zainab Raza", field: "Civil Engineering", domain: "engineering", quote: "Career Gala didn't just help me choose engineering - they helped me understand which specialization would suit my strengths. Their industry connections also helped me secure an internship.", before: "Not sure which engineering specialization fits", after: "The right specialization, plus an internship" },
-  ],
-  faq: [
-    { cat: "Pricing", q: "How much does career counselling cost?", a: "We offer a free initial consultation to understand your needs. Our full counselling packages start from PKR 15,000 and vary based on the level of support you need. We also offer flexible payment plans to make our services accessible to all students.", price: "From PKR 15,000" },
-    { cat: "Process", q: "How long does the career counselling process take?", a: "The initial assessment and roadmap creation typically takes 2-3 weeks. However, we provide ongoing support for as long as you need it. Most students work with us for 3-6 months to see significant progress in their career journey." },
-    { cat: "Eligibility", q: "Do you provide guidance for all career domains?", a: "Yes, we have experienced counselors across all major fields including engineering, medicine, business, arts, IT, social sciences, and more. Our team stays updated on industry trends and educational requirements in Pakistan and abroad." },
-    { cat: "Process", q: "Is the counselling available online or in-person?", a: "We offer both online and in-person sessions to accommodate your preferences. Our online sessions are conducted via video call and are just as effective as in-person meetings. We have physical offices in Karachi, Lahore, and Islamabad." },
-    { cat: "Eligibility", q: "What is your success rate?", a: "Over 95% of our students report high satisfaction with their career choices after working with us. We've helped over 500 students gain admission to top universities, secure internships, and land their dream jobs. Our success is measured by your success." },
-    { cat: "Eligibility", q: "Who is eligible for your services?", a: "Our services are designed for Pakistani students at all stages - from high school students choosing their A-levels subjects to university graduates planning their next career move. We also help professionals looking to switch careers or advance in their current field." },
-    { cat: "Process", q: "How do you create personalized roadmaps?", a: "We use a combination of psychometric assessments, one-on-one interviews, skills evaluations, and market research to create your roadmap. Each plan is unique and considers your personality, strengths, interests, financial situation, and long-term goals." },
-    { cat: "Admissions", q: "Can you help with university applications and admissions?", a: "Absolutely. We provide comprehensive support for university applications including essay writing, interview preparation, scholarship guidance, and application strategy. We have experience with both local Pakistani universities and international institutions." },
-  ],
-  domains: ["Engineering", "Business", "Arts", "Medicine", "Information Technology", "Other"],
-  stages: ["Matric / O-Levels", "FSc / A-Levels", "University", "Professional"],
-  footerAbout: "Career Gala helps Pakistani students and professionals discover, plan and achieve their career goals through expert counselling, personalized roadmaps and life skills training.",
 };
-export type Story = (typeof site.stories)[number];
+
+export type SampleTutor = {
+  ini: string; name: string; subj: string; short?: string; cat: string; mode: "Online" | "Home" | "Both";
+  exp: string; rating: number; reviews: number; rate: number; bg: string; level: string; city: string;
+};
+
+/** [FIX] Sample tutors from the design. Replace with real approved tutors, public prices and real reviews. */
+export const tutors: SampleTutor[] = [
+  { ini: "AK", name: "Ayesha K.", subj: "O Level Maths", cat: "Maths", mode: "Both", exp: "6 yrs", rating: 4.9, reviews: 48, rate: 1800, bg: "#1F8F7A", level: "O Level", city: "Lahore" },
+  { ini: "HR", name: "Hamza R.", subj: "IELTS Speaking & Writing", short: "IELTS", cat: "IELTS", mode: "Online", exp: "4 yrs", rating: 4.8, reviews: 61, rate: 2000, bg: "#1C9AB0", level: "University", city: "Karachi" },
+  { ini: "SN", name: "Sana N.", subj: "MDCAT Biology", cat: "MDCAT", mode: "Online", exp: "5 yrs", rating: 4.9, reviews: 37, rate: 2200, bg: "#E2536F", level: "FSc", city: "Islamabad" },
+  { ini: "UA", name: "Usman A.", subj: "FSc Physics", cat: "Science", mode: "Home", exp: "8 yrs", rating: 4.7, reviews: 29, rate: 1500, bg: "#6E5B8F", level: "FSc", city: "Lahore" },
+  { ini: "MF", name: "Maryam F.", subj: "Spoken English", cat: "English", mode: "Online", exp: "3 yrs", rating: 4.9, reviews: 52, rate: 1200, bg: "#1F8F7A", level: "University", city: "Karachi" },
+  { ini: "BT", name: "Bilal T.", subj: "A Level Chemistry", cat: "Science", mode: "Online", exp: "7 yrs", rating: 4.8, reviews: 33, rate: 2500, bg: "#1C9AB0", level: "A Level", city: "Islamabad" },
+  { ini: "ZH", name: "Zara H.", subj: "Matric Maths", cat: "Maths", mode: "Home", exp: "2 yrs", rating: 4.6, reviews: 18, rate: 1000, bg: "#E2536F", level: "Matric", city: "Faisalabad" },
+  { ini: "OS", name: "Omer S.", subj: "IELTS Academic", cat: "IELTS", mode: "Both", exp: "9 yrs", rating: 4.9, reviews: 44, rate: 2100, bg: "#6E5B8F", level: "University", city: "Lahore" },
+];
