@@ -112,13 +112,22 @@ export default function SiteLayout({ path, bare, children }: { path: string; bar
       <div className="s-bar">
         <header>
           <Brand />
-          <nav aria-label="Main">
-            {site.nav.map((n) => <a key={n.path} href={n.path} aria-current={n.path === path ? "page" : undefined}>{n.label}</a>)}
-          </nav>
-          <div className="s-row acts">
-            <a className="s-btn s-ghost sm" href="/login">Log in</a>
-            <a className="s-btn s-coral sm" href="/signup">Sign up</a>
-          </div>
+          {path === "/" ? (
+            <div className="s-row acts">
+              <a className="s-btn s-ghost sm wa" href={site.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp us"><Icon size={18} stroke="currentColor"><Chat /></Icon>WhatsApp us</a>
+              <a className="s-btn s-coral sm" href="/home">Get started</a>
+            </div>
+          ) : (
+            <>
+              <nav aria-label="Main">
+                {site.nav.map((n) => <a key={n.path} href={n.path} aria-current={n.path === path ? "page" : undefined}>{n.label}</a>)}
+              </nav>
+              <div className="s-row acts">
+                <a className="s-btn s-ghost sm" href="/login">Log in</a>
+                <a className="s-btn s-coral sm" href="/signup">Sign up</a>
+              </div>
+            </>
+          )}
         </header>
       </div>
       {bare ? children : <main id="main" className="s-main">{children}</main>}
